@@ -2,6 +2,12 @@
 
 Statyczna strona prezentacyjna z animowanym przejściem wideo, galerią, interaktywnymi rzutami 2D/3D, parametrami lokalu i formularzem kontaktowym.
 
+## Podgląd strony
+
+https://brand-designer-pl.github.io/konarzewo/
+
+GitHub Pages publikuje pliki z katalogu `docs/`, który zawiera kopię aktualnej strony z `dist/`.
+
 ## Uruchomienie lokalne
 
 ```sh
