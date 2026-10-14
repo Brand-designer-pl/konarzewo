@@ -70,3 +70,5 @@ a:active,button:active{opacity:.7}@media(prefers-reduced-motion:reduce){a,button
 /* Visible color transitions on every button, preserving selected states. */
 button,.sticky-contact{transition:background-color .4s ease-in-out,color .4s ease-in-out,border-color .4s ease-in-out,box-shadow .3s ease,opacity .3s ease,translate .3s ease}
 @media(hover:hover) and (pointer:fine){.gallery-heading button:hover,.plan-tabs button:hover,[data-view]:hover{background-color:#41413d;color:#fff;border-color:#41413d;opacity:1}.plan-tabs button[aria-selected=true]:hover,[data-view][aria-pressed=true]:hover{background-color:#55554f;color:#fff}.form-footer button:hover{background-color:#c8c8bf;color:#161616}.sticky-contact:hover{background-color:#d8d8cd;color:#181818;box-shadow:inset 0 0 0 1px #bbbbae}.menu-button:hover,.replay:hover{background-color:rgba(255,255,255,.15);color:#fff;opacity:1}}
+
+.contact-grid{grid-template-columns:1fr}.contact-grid a{max-width:550px}

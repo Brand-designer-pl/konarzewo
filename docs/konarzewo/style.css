@@ -73,3 +73,5 @@ button,.sticky-contact{transition:background-color .4s ease-in-out,color .4s eas
 
 /* Mario-Bud identity, original SVG proportions preserved. */
 .brand-logo{display:inline-flex;align-items:center;flex-shrink:0}.logo-image{width:145px;height:auto;display:block}.logo-light{filter:invert(1)}.footer-logo{display:block;width:120px;height:auto}.section-logo{display:block;width:100px;height:auto;margin-bottom:35px;opacity:.65}.portfolio-nav{padding-top:18px;padding-bottom:18px}.header .brand-logo{font-size:initial}.header .logo-image{width:125px}.contact>.section-logo{width:120px;opacity:.8}@media(max-width:760px){.logo-image{width:110px}.header .logo-image{width:100px}.section-logo{width:85px;margin-bottom:25px}.footer-logo{width:100px}}
+
+.contact-grid{grid-template-columns:1fr}.contact-grid a{max-width:550px}
