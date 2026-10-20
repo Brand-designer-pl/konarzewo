@@ -1,2 +1,2 @@
-# Konarzewo
-Statyczna strona w dist/. Zachowaj HTML/CSS/JS i GSAP oraz stylistykę biało-szaro-grafitową. Respektuj prefers-reduced-motion. Nie zmieniaj architektury budynku. Nie wymyślaj cen historycznych. Formularz korzysta z mailto. Nie umieszczaj poświadczeń w repozytorium.
+# Mario-Bud — serwis dewelopera
+Publikowane źródła są w docs/. GitHub Pages publikuje docs/ z main. Strona główna prezentuje dwie inwestycje: konarzewo/ i kamionki/. Wspólne menu ma jedno źródło: docs/site-navigation.js i docs/site-navigation.css. Zmiany nawigacji wprowadzaj tam, zachowując identyczne menu na wszystkich stronach. Zachowaj HTML/CSS/JS, GSAP, prefers-reduced-motion, architekturę budynków i istniejące animacje wideo. Dane kontaktowe: Mario-Bud, Mariusz Orwat, 888610648. Nie wymyślaj e-maila ani historii cen. Formularz przygotowuje SMS. Nie umieszczaj poświadczeń w repozytorium.
