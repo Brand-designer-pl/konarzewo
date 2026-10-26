@@ -46,3 +46,5 @@ Wejście do inwestycji pokazuje dwa budynki i cztery lokale A1/A2/B1/B2. Kolorow
 2026-10-26: Czerwona linia dachu w logo (także jasny wariant i animowane intro). Wspólne menu ma półprzezroczyste mleczne tło z blur od pierwszego kadru. Ocieplenie w opisach Konarzewa zmienione na styropian 15 cm; parametry Kamionek pozostawione bez zmian.
 
 2026-10-26: Na czterech stronach lokali dodano przyklejony pod menu przełącznik A1/A2/B1/B2 z aria-current i linkiem do mapy inwestycji.
+
+2026-10-26: Breadcrumbsy przeniesiono do powierzchni nawigacji lokali, poza slajder. Usunięto pozycjonowanie absolutne dla tych breadcrumbsów.
