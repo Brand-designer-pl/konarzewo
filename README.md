@@ -48,3 +48,5 @@ Wejście do inwestycji pokazuje dwa budynki i cztery lokale A1/A2/B1/B2. Kolorow
 2026-10-26: Na czterech stronach lokali dodano przyklejony pod menu przełącznik A1/A2/B1/B2 z aria-current i linkiem do mapy inwestycji.
 
 2026-10-26: Breadcrumbsy przeniesiono do powierzchni nawigacji lokali, poza slajder. Usunięto pozycjonowanie absolutne dla tych breadcrumbsów.
+
+2026-10-26: Cały obrys domu w logo, wraz z lewą linią i podstawą, czerwony jako kontynuacja dachu. Dotyczy obu wariantów i animacji intro.
