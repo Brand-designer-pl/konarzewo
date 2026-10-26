@@ -3,3 +3,10 @@
 
 /* Shared right crop: preserve full layer coordinates for color/clay alignment. */
 .estate-stage>img{width:112.972973%;max-width:none}.unit-a1{left:5.987568%;width:21.238919%}.unit-a2{left:27.226486%;width:24.514595%}.unit-b1{left:51.741081%;width:20.899999%}.unit-b2{left:72.641081%;width:24.28919%}
+
+/* Cursor-attached frosted glass: the plot link remains the click target. */
+.estate-popover{pointer-events:none;background:rgba(247,249,244,.62);border:1px solid rgba(255,255,255,.72);-webkit-backdrop-filter:blur(22px) saturate(125%);backdrop-filter:blur(22px) saturate(125%);box-shadow:0 12px 40px rgba(25,32,22,.12),inset 0 1px 0 rgba(255,255,255,.7);animation:glass-appear .18s ease-out}.popover-hint{display:flex;align-items:center;gap:9px;border-top:1px solid rgba(60,65,52,.16);padding-top:12px;margin:12px 0 0;font-size:12px;color:#444a3c;line-height:1.45}.popover-hint>span:first-child{font-size:21px}.estate-hit{cursor:pointer}.estate-hit:hover span::after,.estate-hit:focus-visible span::after{content:' ↗'}
+@media(min-width:751px) and (hover:hover){.estate-popover{position:fixed;top:0;left:0;bottom:auto;z-index:1000}}
+@media(max-width:750px){.estate-popover{position:absolute}.popover-hint{padding-top:8px;margin-top:8px}}
+@keyframes glass-appear{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.estate-popover{animation:none}}
