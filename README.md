@@ -52,3 +52,6 @@ Wejście do inwestycji pokazuje dwa budynki i cztery lokale A1/A2/B1/B2. Kolorow
 2026-10-26: Cały obrys domu w logo, wraz z lewą linią i podstawą, czerwony jako kontynuacja dachu. Dotyczy obu wariantów i animacji intro.
 
 2026-10-26: Karta Konarzewa na stronie głównej oznaczona etykietą „4 dostępne lokale” na zdjęciu.
+
+### 2026-10-26 — panel klienta, etap lokalny
+Panel `/panel/`, bezpieczny serwer Python/SQLite w `server/`, wspólne dane ofert w `docs/data/offers.json`, publiczny adapter `offers.js`. Działające lokalne logowanie, zapis cen i statusów, automatyczna historia cen. Rezerwacja ma żółty stan na mapie i podpis. Publiczny snapshot pozostaje z czterema dostępnymi lokalami Konarzewa; lokalny A1 oznaczono rezerwacją wyłącznie do podglądu. Hosting nie jest jeszcze wybrany przez użytkownika, więc panel online na GitHub Pages nie ma aktywnego serwera. Instrukcja uruchomienia i dalszego wdrożenia w server/README.md. Testy API zaliczone; przeglądarka: logowanie, zapis i mapa. Claude review niedostępna z powodu braku logowania.
