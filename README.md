@@ -34,3 +34,5 @@ Nie wykonano pomiaru Core Web Vitals ani profilowania na rzeczywistym telefonie.
 
 ### 2026-10-26 — wybór lokalu Konarzewo
 Wejście do inwestycji pokazuje dwa budynki i cztery lokale A1/A2/B1/B2. Kolorowy obszar wybierany na tle białej makiety; hover, fokus klawiatury i dotyk. Cztery osobne strony lokal-*.html zachowują wcześniejszą prezentację. Parametry potwierdzone: 106,10 m² / działka ok. 350 m² / 749 000 zł. Podział graficzny poglądowy. Grafiki WebP współdzielone; brak nowego wideo i bibliotek.
+
+2026-10-26: Widok wyboru lokali wykadrowany bez asfaltowej ulicy po prawej. Piaskowy dojazd wyprostowany w obu warstwach. Pola klikalne przeliczone do wspólnego kadru (1672 → 1480 szerokości widocznej); maska koloru pozostaje w oryginalnych współrzędnych warstwy.
