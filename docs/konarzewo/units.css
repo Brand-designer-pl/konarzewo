@@ -12,7 +12,7 @@
 @media(prefers-reduced-motion:reduce){.estate-popover{animation:none}}
 
 /* Interpolate the mask itself so color travels continuously between all four plots. */
-[data-estate-interactive] .estate-selected{transition:clip-path .8s cubic-bezier(.45,0,.55,1),opacity .6s cubic-bezier(.45,0,.55,1)}
-[data-estate-interactive] .estate-clay{transition:opacity .65s cubic-bezier(.45,0,.55,1)}
-[data-estate-interactive] .estate-hit span{transition:background .4s ease-in-out,color .4s ease-in-out,transform .4s ease-in-out}
+[data-estate-interactive] .estate-selected{transition:clip-path .42s cubic-bezier(.22,.08,.24,1),opacity .32s cubic-bezier(.22,.08,.24,1)}
+[data-estate-interactive] .estate-clay{transition:opacity .36s cubic-bezier(.22,.08,.24,1)}
+[data-estate-interactive] .estate-hit span{transition:background .22s ease-in-out,color .22s ease-in-out,transform .22s ease-in-out}
 @media(prefers-reduced-motion:reduce){[data-estate-interactive] .estate-selected,[data-estate-interactive] .estate-clay,[data-estate-interactive] .estate-hit span{transition:none}}

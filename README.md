@@ -40,3 +40,5 @@ Wejście do inwestycji pokazuje dwa budynki i cztery lokale A1/A2/B1/B2. Kolorow
 2026-10-26: Dymek parametrów lokalu jako mleczne szkło z rozmyciem, podąża za kursorem i unika krawędzi ekranu. Bez przycisku CTA; tekst i strzałka sugerują kliknięcie samego lokalu. Na dotyku pierwsze dotknięcie pokazuje parametry, ponowne otwiera lokal; Enter działa bezpośrednio. Sprawdzono składnię JS i widok / nawigację klawiaturą w przeglądarce.
 
 2026-10-26: Maska koloru płynnie interpoluje pomiędzy A1/A2/B1/B2 przez 0,8 s (ease-in-out), także przy pomijaniu lokali i przerwaniu ruchu kolejnym wyborem. Pierwsze zaznaczenie i wyjście łagodnie przenikają (0,6–0,65 s). prefers-reduced-motion wyłącza przejścia.
+
+2026-10-26: Przyspieszono przesuwanie zaznaczenia z 0,8 do 0,42 s, z szybszym rozpędzeniem i miękkim wyhamowaniem. Przenikanie 0,32–0,36 s, reakcja etykiet 0,22 s. Zachowano reduced motion.
