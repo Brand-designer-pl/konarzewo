@@ -38,3 +38,5 @@ Wejście do inwestycji pokazuje dwa budynki i cztery lokale A1/A2/B1/B2. Kolorow
 2026-10-26: Widok wyboru lokali wykadrowany bez asfaltowej ulicy po prawej. Piaskowy dojazd wyprostowany w obu warstwach. Pola klikalne przeliczone do wspólnego kadru (1672 → 1480 szerokości widocznej); maska koloru pozostaje w oryginalnych współrzędnych warstwy.
 
 2026-10-26: Dymek parametrów lokalu jako mleczne szkło z rozmyciem, podąża za kursorem i unika krawędzi ekranu. Bez przycisku CTA; tekst i strzałka sugerują kliknięcie samego lokalu. Na dotyku pierwsze dotknięcie pokazuje parametry, ponowne otwiera lokal; Enter działa bezpośrednio. Sprawdzono składnię JS i widok / nawigację klawiaturą w przeglądarce.
+
+2026-10-26: Maska koloru płynnie interpoluje pomiędzy A1/A2/B1/B2 przez 0,8 s (ease-in-out), także przy pomijaniu lokali i przerwaniu ruchu kolejnym wyborem. Pierwsze zaznaczenie i wyjście łagodnie przenikają (0,6–0,65 s). prefers-reduced-motion wyłącza przejścia.
