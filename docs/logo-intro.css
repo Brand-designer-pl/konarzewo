@@ -3,3 +3,6 @@
 .intro-logo-svg .logo-roof{fill:none;stroke:#c83732;stroke-width:17;stroke-linecap:round;stroke-linejoin:miter}
 
 .intro-logo-svg .logo-outline{fill:#c83732;stroke:#c83732}
+
+/* Draw a single red house outline first; reveal the black wordmark afterwards. */
+.intro-logo-svg .intro-house-line{fill:none;fill-opacity:1;stroke:#c83732;stroke-width:17;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:2000;stroke-dashoffset:2000}

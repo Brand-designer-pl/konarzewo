@@ -55,3 +55,5 @@ Wejście do inwestycji pokazuje dwa budynki i cztery lokale A1/A2/B1/B2. Kolorow
 
 ### 2026-10-26 — panel klienta, etap lokalny
 Panel `/panel/`, bezpieczny serwer Python/SQLite w `server/`, wspólne dane ofert w `docs/data/offers.json`, publiczny adapter `offers.js`. Działające lokalne logowanie, zapis cen i statusów, automatyczna historia cen. Rezerwacja ma żółty stan na mapie i podpis. Publiczny snapshot pozostaje z czterema dostępnymi lokalami Konarzewa; lokalny A1 oznaczono rezerwacją wyłącznie do podglądu. Hosting nie jest jeszcze wybrany przez użytkownika, więc panel online na GitHub Pages nie ma aktywnego serwera. Instrukcja uruchomienia i dalszego wdrożenia w server/README.md. Testy API zaliczone; przeglądarka: logowanie, zapis i mapa. Claude review niedostępna z powodu braku logowania.
+
+2026-10-26: Intro logo ma dwa następujące po sobie etapy: pojedyncza czerwona linia rysuje dach, ścianę i podstawę (1,25 s), następnie pojawia się czarny napis Mario-Bud (0,48 s z delikatną sekwencją). Potem zachowany przelot logo do menu.
