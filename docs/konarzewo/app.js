@@ -33,7 +33,7 @@ if(window.gsap&&window.ScrollTrigger){
     .then(blob=>{if(controller.signal.aborted)return;const url=URL.createObjectURL(blob);objectUrls.push(url);film.src=url;film.load();})
     .catch(()=>{if(!controller.signal.aborted){film.src=src;film.load();}});
   };
-  loadFilm(orbit,originalOrbitSrc);loadFilm(reverseFilm,orbit?.dataset.reverseSrc);
+  loadFilm(orbit,originalOrbitSrc);orbit?.addEventListener('canplaythrough',()=>loadFilm(reverseFilm,orbit?.dataset.reverseSrc),{once:true});
   const showArrival=()=>{
    if(arrivalShown)return;arrivalShown=true;gsap.to('.arrival-gradient',{opacity:1,duration:.85,ease:'power2.inOut',overwrite:true});
    gsap.set('.arrival',{autoAlpha:1,y:0});
@@ -83,6 +83,8 @@ if(window.gsap&&window.ScrollTrigger){
    if(initialized||!Number.isFinite(orbit?.duration)||orbit.duration<=0)return;
    initialized=true;orbit.dataset.transitionState='ready';
    ticker=()=>{
+    if(!flying&&ticker.last===flight.progress)return;
+    ticker.last=flight.progress;
     if(flying&&Number.isFinite(activeFilm.duration))flight.progress=backwards?1-clamp(activeFilm.currentTime/activeFilm.duration):clamp(activeFilm.currentTime/activeFilm.duration);
     // Reveal during the last 28% of the forward flight, before the camera stops.
     if(flying&&!backwards&&flight.progress>=.72)showArrival();

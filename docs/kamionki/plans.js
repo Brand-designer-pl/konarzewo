@@ -11,6 +11,6 @@
  };
  document.querySelectorAll('[data-kam-floor]').forEach(button=>button.addEventListener('click',()=>{floor=button.getAttribute('data-kam-floor');update();}));
  document.querySelectorAll('[data-kam-view]').forEach(button=>button.addEventListener('click',()=>{view=button.getAttribute('data-kam-view');update();}));
- for(const options of Object.values(assets))for(const src of Object.values(options)){const preload=new Image();preload.src=src;}
+
  update();
 })();
