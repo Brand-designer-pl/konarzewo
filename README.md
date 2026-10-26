@@ -42,3 +42,5 @@ Wejście do inwestycji pokazuje dwa budynki i cztery lokale A1/A2/B1/B2. Kolorow
 2026-10-26: Maska koloru płynnie interpoluje pomiędzy A1/A2/B1/B2 przez 0,8 s (ease-in-out), także przy pomijaniu lokali i przerwaniu ruchu kolejnym wyborem. Pierwsze zaznaczenie i wyjście łagodnie przenikają (0,6–0,65 s). prefers-reduced-motion wyłącza przejścia.
 
 2026-10-26: Przyspieszono przesuwanie zaznaczenia z 0,8 do 0,42 s, z szybszym rozpędzeniem i miękkim wyhamowaniem. Przenikanie 0,32–0,36 s, reakcja etykiet 0,22 s. Zachowano reduced motion.
+
+2026-10-26: Czerwona linia dachu w logo (także jasny wariant i animowane intro). Wspólne menu ma półprzezroczyste mleczne tło z blur od pierwszego kadru. Ocieplenie w opisach Konarzewa zmienione na styropian 15 cm; parametry Kamionek pozostawione bez zmian.
