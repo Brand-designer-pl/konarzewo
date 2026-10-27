@@ -24,3 +24,18 @@
 .maquette-home .brand-stage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.maquette-home .brand-stage{isolation:isolate}.maquette-home .brand-stage .claim{z-index:2}.maquette-home .brand-stage.is-arrived .brand-shade{background:linear-gradient(90deg,rgba(20,20,20,.65),rgba(20,20,20,.15) 65%,transparent)}.maquette-home .brand-stage.is-arrived .claim-two,.maquette-home .brand-stage.is-arrived .claim-two>p:not(.eyebrow){color:#fff}.maquette-home .brand-stage .brand-shade{transition:opacity .7s ease-in-out}.maquette-home .brand-stage.is-flying .brand-shade{opacity:.2}.maquette-home .brand-stage.is-arrived .brand-shade{opacity:1}.maquette-home .claim-two h2{font-family:Arial,Helvetica,sans-serif;font-weight:400}.maquette-home .claim-two h2 em{font:inherit}
 
 .investment-card .card-image{position:relative}.availability-badge{position:absolute;left:20px;bottom:20px;display:inline-flex;align-items:center;gap:9px;padding:11px 16px;border-radius:999px;background:rgba(248,250,245,.9);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);color:#30372b;font-size:13px;font-weight:500;box-shadow:0 2px 16px #00000012;border:1px solid #ffffff99;z-index:1}.availability-dot{width:7px;height:7px;border-radius:50%;background:#64804b;flex-shrink:0}@media(max-width:600px){.availability-badge{left:12px;bottom:12px;padding:9px 13px;font-size:12px}}
+
+/* Photographic garden hero, preserving the existing scroll-driven zoom. */
+.garden-home .brand-stage{background:#283c2a;color:#fff}
+.garden-home .brand-stage .brand-shade{background:linear-gradient(90deg,rgba(10,20,14,.68),rgba(10,20,14,.23) 48%,transparent 78%),linear-gradient(0deg,rgba(9,18,12,.42),transparent 65%)}
+.garden-home .claim>p:not(.eyebrow),.garden-home .journey-cue,.garden-home .journey-number{color:#f0f0e9}
+.garden-home .claim .line-link{display:inline-flex;align-items:center;min-height:48px;padding:14px 24px;border:1px solid var(--brand-red);border-radius:999px;background:var(--brand-red);color:white;font-size:14px}
+.garden-home .claim .line-link:hover{background:#a82b27;border-color:#a82b27;color:white}
+.hero-visual-note{position:absolute;right:6vw;bottom:3vh;font-size:10px;color:#ffffffb3;z-index:2}
+.garden-home .card-head>span{color:var(--brand-red)}
+.garden-home .investment-card:hover .card-head h3{color:var(--brand-red)}
+.garden-home .investment-card .card-head h3{transition:color .3s ease-in-out}
+.garden-home .card-bottom{border-top-color:#c8373240}
+@media(max-width:760px){.garden-home .brand-stage .brand-shade{background:linear-gradient(0deg,rgba(8,18,12,.88),rgba(8,18,12,.5) 43%,rgba(8,18,12,.06) 85%)}.garden-home .brand-image{object-position:65% center}.garden-home .claim{bottom:13vh}.hero-visual-note{bottom:2vh;font-size:9px}}
+
+.garden-home .hero-visual-note,.garden-home .journey-number{background:rgba(10,18,13,.72);border-radius:999px;padding:6px 10px;color:#fff}

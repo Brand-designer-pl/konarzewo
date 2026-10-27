@@ -3,3 +3,14 @@
 /* Frosted navigation is visible from the first frame on every page. */
 .site-header,.site-header.is-scrolled,.site-header.is-menu-open,.unit-overview .site-header{background:rgba(245,245,241,.72);color:#232323;-webkit-backdrop-filter:blur(20px) saturate(120%);backdrop-filter:blur(20px) saturate(120%);box-shadow:0 1px 0 rgba(255,255,255,.5)}
 .site-header .site-brand img,.site-header.is-scrolled .site-brand img,.site-header.is-menu-open .site-brand img,.logo-light{filter:none!important}
+
+/* Mario-Bud red: small identity accents across the public website. */
+:root{--brand-red:#c83732}
+.site-header nav a:after{background:var(--brand-red);height:2px}
+.site-header nav a[aria-current=page]{color:var(--brand-red)}
+.eyebrow:before{content:"";display:inline-block;width:24px;height:2px;background:var(--brand-red);vertical-align:middle;margin-right:12px}
+.summary-grid dt .info-icon{color:var(--brand-red)}
+.contact .form-footer button{background:var(--brand-red);border-color:var(--brand-red);color:#fff}
+.contact .form-footer button:hover{background:#a82b27;border-color:#a82b27;color:#fff}
+.contact .form-fields input:focus,.contact .form-fields textarea:focus{border-color:var(--brand-red)}
+@media(max-width:950px){.site-header nav a[aria-current=page]{border-bottom-color:var(--brand-red)}}

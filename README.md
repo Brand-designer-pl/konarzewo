@@ -62,7 +62,7 @@ Panel `/panel/`, bezpieczny serwer Python/SQLite w `server/`, wspólne dane ofer
 
 2026-10-26: Intro logo ma dwa następujące po sobie etapy: pojedyncza czerwona linia rysuje dach, ścianę i podstawę (1,25 s), następnie pojawia się czarny napis Mario-Bud (0,48 s z delikatną sekwencją). Potem zachowany przelot logo do menu.
 
-2026-10-27: Panel klienta ma opcję zapamiętania logowania na 30 dni; bez konta GitHub. Bez zaznaczenia cookie sesyjne z limitem 8 godzin po stronie serwera. Wylogowanie unieważnia sesję.
+2026-10-27: Panel klienta ma opcję zapamiętania logowania na 90 dni; bez konta GitHub. Bez zaznaczenia cookie sesyjne z limitem 8 godzin po stronie serwera. Wylogowanie unieważnia sesję.
 
 2026-10-27: Panel przebudowany według monochromatycznego stylu Longwave. Strona i API Passenger/Python 3.12 wdrożone w CyberFolks, baza poza webrootem; konto administratora przeniesione bez zmiany hasła. Certyfikat Let’s Encrypt zainstalowany bez zakupu. Dodano testy WSGI i procedurę automatycznej publikacji z GitHuba po zgodzie właściciela na dedykowany klucz. Nie uruchomiono raportowania do dane.gov.pl.
 
@@ -70,3 +70,6 @@ Panel `/panel/`, bezpieczny serwer Python/SQLite w `server/`, wspólne dane ofer
 Recenzja Claude tylko do odczytu: brak potwierdzonych regresji w widoku dwóch inwestycji, wyborze lokalizacji, zapisie i nawigacji. Publikacja CyberFolks zakończona sukcesem; nowy JS oraz obydwa zdjęcia odpowiadają 200 przez HTTPS. Dane i mechanizm logowania nie były zmieniane.
 
 2026-10-27: Cztery karty lokali Konarzewa w panelu mają miniatury mapy z góry. Współdzielone warstwy osiedle-clay.webp/osiedle-color.webp i granice z publicznego units.js; tylko właściwy lokal i działka pozostają w kolorze. Etykiety A1/A2/B1/B2 oraz podpis budynku i lewej/prawej części. Bez generowania nowych obrazów i bez zmian w danych ofert; obrazy ładowane leniwie i współdzielone z pamięci przeglądarki.
+
+2026-10-27: Baner strony głównej ma fotograficzną wizualizację tego samego budynku w ogrodzie o zachodzie słońca (mario-bud-garden-hero.webp, 1672×941, ok. 302 KB). Oryginalna makieta zachowana. Zachowany lekki zoom po scrollu; biały tekst na ciemnym gradiencie, podpis wizualizacji. Czerwień #c83732 z logo w CTA, podkreśleniach menu, krótkich liniach przy nagłówkach, ikonach parametrów i formularzu kontaktowym. Lokalny podgląd desktop: pierwszy kadr i przejście do drugiego hasła sprawdzone; nie wykonano pomiarów rzeczywistych Core Web Vitals.
+Recenzja Claude tylko do odczytu: poprawiono kontrast małych podpisów przez lokalne półprzezroczyste tło; brak pozostałych potwierdzonych regresji. Nowy zasób ma uprawnienia 644.
