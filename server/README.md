@@ -43,3 +43,19 @@ Klient loguje się bezpośrednio w przeglądarce, własnym e-mailem i hasłem, b
 - Panel ma monochromatyczny wygląd według Longwave Boards. Zasada dla przyszłych paneli/aplikacji zapisana w nadrzędnym `Design Studio/AGENTS.md`.
 - Kontrole: 4 testy HTTP oraz 2 testy WSGI (montowanie, Origin/CSRF, Secure cookies, zapamiętanie logowania, zapis/historia i trwałość), składnia JS/shell. Próba niezależnej recenzji Claude: niedostępna, CLI zgłasza brak logowania. Nie deklarować wykonanej niezależnej recenzji.
 - Raportowanie cen do dane.gov.pl nie jest częścią tego wdrożenia; nie uruchomiono cyklicznego eksportu.
+
+## Konta administratorów i mail aktywacyjny — 27.10.2026
+Logo panelu zachowuje czerwoną linię marki. Profil pokazuje zalogowane konto. Sesje są przypisane do kont; migracja zachowuje dotychczasowe sesje przy jednoznacznym jednym administratorze, a nieprzypisywalne stare sesje usuwa.
+
+Właściciel może utworzyć konto lub ponowić zaproszenie wyłącznie przez zaufany SSH/CLI:
+```sh
+cd /home/sentra/apps/mario-bud
+MB_ORIGIN=https://mario-bud.com.pl MB_DB=/home/sentra/.appdata/mario-bud/offers.sqlite3 /home/sentra/virtualenv/apps/mario-bud/3.12/bin/python -m server.invite_admin --email ADRES
+```
+Komenda wysyła jedną wiadomość transakcyjną przez lokalny sendmail. Konto nowe pozostaje bez możliwości logowania, dopóki odbiorca nie ustawi hasła. Istniejącego hasła nie zmienia się przy samym wydaniu zaproszenia. Nowe zaproszenie unieważnia wcześniejsze linki tego konta. Baza przechowuje jedynie SHA-256 losowego 256-bitowego tokena, ważnego 24 godziny i jednorazowego; nie drukować linku w logach. Przy błędzie wysyłki link jest unieważniany.
+
+Strona `/panel/ustaw-haslo.html` przyjmuje token z fragmentu URL, usuwa go z paska adresu i przekazuje do API w JSON. Samo otwarcie/sprawdzenie linku nie zużywa go. Origin jest sprawdzany; hasło minimum 14 znaków, powtarzane; zapis atomowy, unieważnienie sesji wyłącznie wskazanego konta, ponowne logowanie zwykłym formularzem. Zapis hasła powoduje dodatkową wiadomość potwierdzającą, bez hasła.
+
+Mail `server/mail.py`: logo PNG osadzone w MIME (czerwona linia), HTML i tekst alternatywny, jasne powierzchnie/czarny przycisk, nadawca `powiadomienia@mario-bud.com.pl`, Reply-To Mariusza Orwata. Brak haseł, surowych tokenów i wiadomości użytkownika w repozytorium. SPF/DKIM domeny istnieją w DNS; przyjęcie przez sendmail nie jest samo w sobie potwierdzeniem dostarczenia do skrzynki.
+
+Sprawdzono 6 testów WSGI i 4 HTTP; nowe testy obejmują tokeny wygasłe, ponawiane, błędne i zużyte, Origin, potwierdzenie hasła, migrację starych sesji, zachowanie sesji innego konta, strukturę MIME i wysyłkę zastąpioną atrapą. W przeglądarce wykonano ustawienie hasła i logowanie konta testowego w izolowanej lokalnej bazie. Recenzja Claude niedostępna, brak logowania.

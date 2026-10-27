@@ -22,6 +22,7 @@ jobs:
           python3 server/test_app.py
           python3 -m unittest server.test_wsgi
           node --check docs/panel/panel.js
+          node --check docs/panel/setup-password.js
       - name: Package public website and application
         run: python3 deploy/package.py /tmp/mario-bud-release.tar.gz
       - name: Publish with dedicated SSH key

@@ -42,7 +42,7 @@ SetEnvIf Request_URI "^/panel/" MB_PANEL
 """)
   # The seed lives outside the web root in production; the public URL is rewritten to the API.
   (staging/'public/data/offers.json').unlink()
-  for relative in ['server/app.py','server/wsgi.py','docs/data/offers.json']:
+  for relative in ['server/app.py','server/wsgi.py','server/mail.py','server/invite_admin.py','docs/data/offers.json','docs/assets/mario-bud-email-logo.png']:
    target=staging/'application'/relative;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes((ROOT/relative).read_bytes())
   (staging/'application/wsgi.py').write_text('from server.wsgi import application\n')
   with tarfile.open(output,'w:gz') as archive:
