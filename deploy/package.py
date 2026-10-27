@@ -21,7 +21,7 @@ RewriteCond %{REQUEST_URI} !^/[.]well-known/acme-challenge/
 RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} !^mario-bud[.]com[.]pl$ [NC]
 RewriteRule ^ https://mario-bud.com.pl%{REQUEST_URI} [R=301,L]
-RewriteRule ^data/offers\\.json$ /api/offers [L]
+RewriteRule ^data/offers\\.json$ /api/offers [R=302,L]
 SetEnvIf Request_URI "^/panel/" MB_PANEL
 <IfModule mod_headers.c>
  Header always set X-Content-Type-Options nosniff
