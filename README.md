@@ -73,3 +73,5 @@ Recenzja Claude tylko do odczytu: brak potwierdzonych regresji w widoku dwóch i
 
 2026-10-27: Baner strony głównej ma fotograficzną wizualizację tego samego budynku w ogrodzie o zachodzie słońca (mario-bud-garden-hero.webp, 1672×941, ok. 302 KB). Oryginalna makieta zachowana. Zachowany lekki zoom po scrollu; biały tekst na ciemnym gradiencie, podpis wizualizacji. Czerwień #c83732 z logo w CTA, podkreśleniach menu, krótkich liniach przy nagłówkach, ikonach parametrów i formularzu kontaktowym. Lokalny podgląd desktop: pierwszy kadr i przejście do drugiego hasła sprawdzone; nie wykonano pomiarów rzeczywistych Core Web Vitals.
 Recenzja Claude tylko do odczytu: poprawiono kontrast małych podpisów przez lokalne półprzezroczyste tło; brak pozostałych potwierdzonych regresji. Nowy zasób ma uprawnienia 644.
+
+2026-10-27: Na życzenie właściciela fotograficzny hero zastąpiony rysunkiem architektonicznym tego samego domu: cienkie grafitowe linie, jasny papier, subtelne czerwone linie konstrukcyjne. Ciemna typografia i jasny gradient dla czytelności; zachowany zoom po scrollu. Poprzednie materiały zachowane.

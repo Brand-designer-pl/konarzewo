@@ -39,3 +39,10 @@
 @media(max-width:760px){.garden-home .brand-stage .brand-shade{background:linear-gradient(0deg,rgba(8,18,12,.88),rgba(8,18,12,.5) 43%,rgba(8,18,12,.06) 85%)}.garden-home .brand-image{object-position:65% center}.garden-home .claim{bottom:13vh}.hero-visual-note{bottom:2vh;font-size:9px}}
 
 .garden-home .hero-visual-note,.garden-home .journey-number{background:rgba(10,18,13,.72);border-radius:999px;padding:6px 10px;color:#fff}
+
+/* Architectural drawing on warm paper with dark, readable typography. */
+.sketch-home .brand-stage{background:#f6f4ef;color:#232323}
+.sketch-home .brand-stage .brand-shade{background:linear-gradient(90deg,rgba(248,246,241,.94),rgba(248,246,241,.8) 28%,rgba(248,246,241,.15) 58%,transparent 75%)}
+.sketch-home .claim>p:not(.eyebrow),.sketch-home .journey-cue{color:#45433f}
+.sketch-home .hero-visual-note,.sketch-home .journey-number{background:rgba(248,246,241,.9);color:#45433f}
+@media(max-width:760px){.sketch-home .brand-stage .brand-shade{background:linear-gradient(0deg,rgba(248,246,241,.98),rgba(248,246,241,.92) 32%,rgba(248,246,241,.35) 65%,transparent)}.sketch-home .brand-image{object-position:65% center}}
