@@ -28,3 +28,6 @@ Przed uruchomieniem dla klienta: utworzyć konto z własnym hasłem, ustawić HT
 - Kopie bezpieczeństwa: SQLite backup API / narzędzie sqlite3; nie kopiować aktywnej bazy bez właściwego backupu.
 
 Testy: `python3 server/test_app.py`. Sprawdzono poprawne i błędne logowanie, blokadę innego Origin, CSRF, walidację ceny, zapis i historię, konflikt wersji, wylogowanie i publiczny odczyt. W przeglądarce sprawdzono logowanie, zapis rezerwacji A1 i żółty stan na lokalnej mapie. Testów na rzeczywistym telefonie oraz infrastruktury produkcyjnej jeszcze nie wykonano. Dodatkowa recenzja Claude niedostępna (CLI niezalogowane).
+
+## Zapamiętanie logowania
+Klient loguje się bezpośrednio w przeglądarce, własnym e-mailem i hasłem, bez GitHuba. Opcja „Zapamiętaj mnie na 30 dni” nadaje sesji i cookie ważność 30 dni. Bez tej opcji cookie jest sesyjne, a limit po stronie serwera to 8 godzin. Wylogowanie usuwa sesję z bazy; zmiana hasła przez --init-admin unieważnia wszystkie sesje. Hasło nie trafia do localStorage ani publicznych plików.

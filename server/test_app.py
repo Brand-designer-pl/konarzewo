@@ -31,6 +31,11 @@ class PanelTests(unittest.TestCase):
   self.assertEqual(next(v for v in app.offers() if v['id']==o['id'])['price'],759000)
   self.assertEqual(self.request('/api/offers/'+o['id'],dict(edit,price=-1),'PATCH',token)[0],400)
   self.assertEqual(self.request('/api/logout',{},'POST',token)[0],200);self.assertEqual(self.request('/api/session')[0],401)
+ def test_remember_login(self):
+  payload={'email':'test@example.com','password':self.password,'remember':True}
+  code,result,headers=self.request('/api/login',payload,'POST');self.assertEqual(code,200);self.assertIn('Max-Age=2592000',headers['Set-Cookie']);self.assertIn('SameSite=Strict',headers['Set-Cookie']);self.assertEqual(self.request('/api/session')[0],200)
+  self.assertEqual(self.request('/api/logout',{},'POST',result['csrf'])[0],200);self.assertEqual(self.request('/api/session')[0],401)
+  code,_,headers=self.request('/api/login',dict(payload,remember=False),'POST');self.assertEqual(code,200);self.assertNotIn('Max-Age',headers['Set-Cookie'])
  def test_public_and_static_boundaries(self):
   code,result,_=self.request('/data/offers.json');self.assertEqual(code,200);self.assertEqual(len(result['offers']),5);self.assertNotIn('hash',str(result));self.assertEqual(self.request('/api/offers/not-real',{},'PATCH')[0],401)
 if __name__=='__main__':unittest.main()

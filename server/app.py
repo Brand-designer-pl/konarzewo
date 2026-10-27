@@ -74,10 +74,10 @@ class Handler(SimpleHTTPRequestHandler):
    password=str(data.get('password',''))
    digest=password_hash(password[:1024],admin['salt'] if admin else '00'*16)
    if not admin or not hmac.compare_digest(digest,admin['hash']):return self.reply(401,{'error':'Nieprawidłowy e-mail lub hasło.'})
-   token=secrets.token_urlsafe(32);csrf=secrets.token_urlsafe(32)
+   token=secrets.token_urlsafe(32);csrf=secrets.token_urlsafe(32);remember=data.get('remember') is True;lifetime=2592000 if remember else 28800
    with connect() as c:
-    c.execute('DELETE FROM sessions WHERE expires<?',(now,));c.execute('INSERT INTO sessions VALUES (?,?,?)',(hashlib.sha256(token.encode()).hexdigest(),csrf,now+28800))
-   return self.reply(200,{'csrf':csrf},'mb_session='+token+'; Path=/api; HttpOnly; SameSite=Strict; Max-Age=28800'+('; Secure' if SECURE else ''))
+    c.execute('DELETE FROM sessions WHERE expires<?',(now,));c.execute('INSERT INTO sessions VALUES (?,?,?)',(hashlib.sha256(token.encode()).hexdigest(),csrf,now+lifetime))
+   return self.reply(200,{'csrf':csrf},'mb_session='+token+'; Path=/api; HttpOnly; SameSite=Strict'+('; Max-Age='+str(lifetime) if remember else '')+('; Secure' if SECURE else ''))
   if path=='/api/logout':
    session=self.session()
    if not session or not hmac.compare_digest(self.headers.get('X-CSRF-Token',''),session['csrf']):return self.reply(403,{'error':'Sesja wygasła.'})
