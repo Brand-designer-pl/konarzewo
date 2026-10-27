@@ -92,19 +92,18 @@ class Handler(SimpleHTTPRequestHandler):
    try:digest=setup_digest(data.get('token'))
    except ValueError:return self.reply(410,{'error':'Link wygasł lub został już wykorzystany. Poproś administratora o nowy.'})
    password=data.get('password');confirmation=data.get('confirmation')
-   if path=='/api/setup-password':
-    if not isinstance(password,str) or not 14<=len(password)<=1024 or len(password.encode())>4096:return self.reply(400,{'error':'Hasło musi mieć od 14 do 1024 znaków.'})
-    if password!=confirmation:return self.reply(400,{'error':'Wpisane hasła różnią się.'})
    with connect() as c:
     c.execute('BEGIN IMMEDIATE')
     setup=c.execute('SELECT * FROM password_setups WHERE token_hash=? AND used=0 AND expires>?',(digest,int(time.time()))).fetchone()
     if not setup:return self.reply(410,{'error':'Link wygasł lub został już wykorzystany. Poproś administratora o nowy.'})
     if path.endswith('/check'):return self.reply(200,{'email':setup['email']})
+    if not isinstance(password,str) or not 14<=len(password)<=1024 or len(password.encode())>4096:return self.reply(400,{'error':'Hasło musi mieć od 14 do 1024 znaków.'})
+    if password!=confirmation:return self.reply(400,{'error':'Wpisane hasła różnią się.'})
     salt=secrets.token_hex(16)
     c.execute('UPDATE admins SET salt=?,hash=? WHERE email=?',(salt,password_hash(password,salt),setup['email']))
     c.execute('UPDATE password_setups SET used=1 WHERE email=?',(setup['email'],))
     c.execute('DELETE FROM sessions WHERE email=?',(setup['email'],))
-   if SECURE and os.path.isfile('/usr/sbin/sendmail'):
+   if SECURE:
     try:
      from server.mail import send_confirmation
      send_confirmation(setup['email'])

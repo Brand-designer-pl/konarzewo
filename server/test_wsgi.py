@@ -68,7 +68,7 @@ class WSGITests(unittest.TestCase):
    self.assertEqual(self.call('/setup-password/check','POST',{'token':value},headers)['status'],410)
   with self.app.connect() as c:c.execute('UPDATE password_setups SET expires=0 WHERE token_hash=?',(self.app.setup_digest(new),))
   self.assertEqual(self.call('/setup-password/check','POST',{'token':new},headers)['status'],410)
-  self.assertEqual(self.call('/setup-password','POST',{'token':new,'password':'short','confirmation':'short'},headers)['status'],400)
+  self.assertEqual(self.call('/setup-password','POST',{'token':new,'password':'short','confirmation':'short'},headers)['status'],410)
  def test_legacy_sessions_migration_preserves_data(self):
   with self.app.connect() as c:
    c.execute('DROP TABLE sessions');c.execute('CREATE TABLE sessions(token TEXT PRIMARY KEY,csrf TEXT NOT NULL,expires INTEGER NOT NULL)')
