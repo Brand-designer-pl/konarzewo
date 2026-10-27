@@ -11,7 +11,7 @@ tar -czf "$MB_STATE/backups/$(basename "$MB_RELEASE").tar.gz" -C "$MB_PUBLIC" . 
 rsync -r "$MB_RELEASE/application/" "$MB_APP/"
 (cd "$MB_APP" && MB_ORIGIN=https://mario-bud.com.pl MB_DB="$MB_STATE/offers.sqlite3" /home/sentra/virtualenv/apps/mario-bud/3.12/bin/python -c 'from server import app; app.initialize()')
 # No --delete: Passenger's managed api/.htaccess and challenge files must survive.
-rsync -r "$MB_RELEASE/public/" "$MB_PUBLIC/"
+rsync -r --perms --chmod=D755,F644 "$MB_RELEASE/public/" "$MB_PUBLIC/"
 chmod 700 "$MB_STATE"
 (cd "$MB_APP" && MB_DB="$MB_STATE/offers.sqlite3" /home/sentra/virtualenv/apps/mario-bud/3.12/bin/python - "$MB_STATE/backups/$(basename "$MB_RELEASE").sqlite3" <<'PY'
 import os,sqlite3,sys
