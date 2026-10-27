@@ -31,3 +31,15 @@ Testy: `python3 server/test_app.py`. Sprawdzono poprawne i błędne logowanie, b
 
 ## Zapamiętanie logowania
 Klient loguje się bezpośrednio w przeglądarce, własnym e-mailem i hasłem, bez GitHuba. Opcja „Zapamiętaj mnie na 30 dni” nadaje sesji i cookie ważność 30 dni. Bez tej opcji cookie jest sesyjne, a limit po stronie serwera to 8 godzin. Wylogowanie usuwa sesję z bazy; zmiana hasła przez --init-admin unieważnia wszystkie sesje. Hasło nie trafia do localStorage ani publicznych plików.
+
+## Produkcja CyberFolks — 27.10.2026
+- Domena `https://mario-bud.com.pl`, panel `https://mario-bud.com.pl/panel/`, publiczne API `/api/offers`.
+- SSH `sentra@s189.cyber-folks.pl:222`. Istniejący lokalny dostęp: `~/.ssh/moonside_github_deploy` (nie kopiować treści do repozytorium).
+- Pliki statyczne: `/home/sentra/domains/mario-bud.com.pl/public_html`; aplikacja Passenger/Python 3.12: `/home/sentra/apps/mario-bud`; baza prywatna `/home/sentra/.appdata/mario-bud/offers.sqlite3`. Zmienne MB_ORIGIN i MB_DB w konfiguracji aplikacji CloudLinux. Moduł `server/wsgi.py` udostępnia istniejącą logikę API pod montowaniem `/api`.
+- Przeniesiono wyłącznie skrót dotychczasowego konta administratora. Dane ofert zainicjowano z zatwierdzonych wartości publicznych, bez lokalnej testowej rezerwacji A1. Hasło pozostaje dotychczasowe, sesje lokalne nie są przenoszone.
+- `deploy/package.py` tworzy paczkę publicznych plików i kodu backendu bez danych logowania/bazy. Przygotowuje adresy nowej domeny, `/api/offers`, przekierowanie HTTPS i nagłówki panelu. Nie pakować `server/data`.
+- `deploy/publish.sh` pozwala opublikować z tego komputera przez istniejący SSH. `deploy/remote-publish.sh` wykonuje kopię aktualnych plików, aktualizuje tylko katalogi Mario-Bud, zachowuje bazę i konfigurację Passenger; kopię SQLite wykonuje przez backup API. Kopie w `.appdata/mario-bud/backups`, poza publicznym katalogiem. Przy zmianach schematu przygotować osobną migrację i kopię przed nią.
+- Workflow `.github/workflows/cyberfolks.yml`: testy HTTP i WSGI, przygotowanie paczki, wysłanie na CyberFolks po pushu do `main`. Osobny klucz w sekretach `MARIO_BUD_DEPLOY_KEY`, zaufane klucze hosta `MARIO_BUD_HOST_KEYS`; klucz serwera ma `restrict` i wymuszone polecenie `receive-release.sh`, bez interaktywnego SSH i przekierowania portów. Serwerowy odbiornik blokuje równoległe wdrożenia. Skrypty serwerowe zmienia się przez zaufany lokalny dostęp.
+- Panel ma monochromatyczny wygląd według Longwave Boards. Zasada dla przyszłych paneli/aplikacji zapisana w nadrzędnym `Design Studio/AGENTS.md`.
+- Kontrole: 4 testy HTTP oraz 2 testy WSGI (montowanie, Origin/CSRF, Secure cookies, zapamiętanie logowania, zapis/historia i trwałość), składnia JS/shell. Próba niezależnej recenzji Claude: niedostępna, CLI zgłasza brak logowania. Nie deklarować wykonanej niezależnej recenzji.
+- Raportowanie cen do dane.gov.pl nie jest częścią tego wdrożenia; nie uruchomiono cyklicznego eksportu.

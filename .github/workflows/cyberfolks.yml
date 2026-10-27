@@ -1,0 +1,38 @@
+name: Publish Mario-Bud to CyberFolks
+on:
+  push:
+    branches: [main]
+    paths: ['docs/**', 'server/**', 'deploy/**', '.github/workflows/cyberfolks.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: mario-bud-production
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test production API
+        run: |
+          python3 server/test_app.py
+          python3 -m unittest server.test_wsgi
+          node --check docs/panel/panel.js
+      - name: Package public website and application
+        run: python3 deploy/package.py /tmp/mario-bud-release.tar.gz
+      - name: Publish with dedicated SSH key
+        env:
+          DEPLOY_KEY: ${{ secrets.MARIO_BUD_DEPLOY_KEY }}
+          DEPLOY_HOST_KEYS: ${{ secrets.MARIO_BUD_HOST_KEYS }}
+        run: |
+          set -euo pipefail
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/mario_bud
+          printf '%s\n' "$DEPLOY_HOST_KEYS" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/mario_bud ~/.ssh/known_hosts
+          trap 'rm -f ~/.ssh/mario_bud' EXIT
+          ssh -i ~/.ssh/mario_bud -p 222 -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes sentra@s189.cyber-folks.pl < /tmp/mario-bud-release.tar.gz

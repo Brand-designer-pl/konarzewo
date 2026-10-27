@@ -1,24 +1,28 @@
-# Konarzewo — strona inwestycji
+# Mario-Bud — strona dewelopera
 
 Statyczna strona prezentacyjna z animowanym przejściem wideo, galerią, interaktywnymi rzutami 2D/3D, parametrami lokalu i formularzem kontaktowym.
 
 ## Podgląd strony
 
-https://brand-designer-pl.github.io/konarzewo/
+https://mario-bud.com.pl/
 
-GitHub Pages publikuje pliki z katalogu `docs/`, który zawiera kopię aktualnej strony z `dist/`.
+Panel klienta: https://mario-bud.com.pl/panel/
+
+GitHub Pages pozostaje podglądem statycznym: https://brand-designer-pl.github.io/konarzewo/
+
+Źródła strony są w `docs/`. Produkcja działa w CyberFolks; zmiany na `main` publikuje workflow GitHub Actions. Panel i API działają na tym samym hostingu, a dane cenowe są przechowywane poza katalogiem strony. Szczegóły: `server/README.md`.
 
 ## Uruchomienie lokalne
 
 ```sh
-python3 -m http.server 8000 --directory dist
+python3 server/app.py
 ```
 
-Otwórz http://localhost:8000.
+Otwórz http://localhost:8770.
 
 ## Technologia
 
-HTML, CSS, JavaScript, GSAP i ScrollTrigger. Gotowe pliki strony i media znajdują się w `dist/`.
+HTML, CSS, JavaScript, GSAP i ScrollTrigger. Aktualne pliki strony i media znajdują się w `docs/`.
 
 ## Uwagi
 
@@ -59,3 +63,5 @@ Panel `/panel/`, bezpieczny serwer Python/SQLite w `server/`, wspólne dane ofer
 2026-10-26: Intro logo ma dwa następujące po sobie etapy: pojedyncza czerwona linia rysuje dach, ścianę i podstawę (1,25 s), następnie pojawia się czarny napis Mario-Bud (0,48 s z delikatną sekwencją). Potem zachowany przelot logo do menu.
 
 2026-10-27: Panel klienta ma opcję zapamiętania logowania na 30 dni; bez konta GitHub. Bez zaznaczenia cookie sesyjne z limitem 8 godzin po stronie serwera. Wylogowanie unieważnia sesję.
+
+2026-10-27: Panel przebudowany według monochromatycznego stylu Longwave. Strona i API Passenger/Python 3.12 wdrożone w CyberFolks, baza poza webrootem; konto administratora przeniesione bez zmiany hasła. Certyfikat Let’s Encrypt zainstalowany bez zakupu. Dodano testy WSGI i procedurę automatycznej publikacji z GitHuba po zgodzie właściciela na dedykowany klucz. Nie uruchomiono raportowania do dane.gov.pl.
