@@ -37,5 +37,5 @@ class PanelTests(unittest.TestCase):
   self.assertEqual(self.request('/api/logout',{},'POST',result['csrf'])[0],200);self.assertEqual(self.request('/api/session')[0],401)
   code,_,headers=self.request('/api/login',dict(payload,remember=False),'POST');self.assertEqual(code,200);self.assertNotIn('Max-Age',headers['Set-Cookie'])
  def test_public_and_static_boundaries(self):
-  code,result,_=self.request('/data/offers.json');self.assertEqual(code,200);self.assertEqual(len(result['offers']),5);self.assertNotIn('hash',str(result));self.assertEqual(self.request('/api/offers/not-real',{},'PATCH')[0],401)
+  code,result,_=self.request('/data/offers.json');self.assertEqual(code,200);self.assertEqual(len(result['offers']),7);self.assertNotIn('hash',str(result));self.assertEqual(self.request('/api/offers/not-real',{},'PATCH')[0],401)
 if __name__=='__main__':unittest.main()

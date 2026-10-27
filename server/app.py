@@ -30,6 +30,13 @@ CREATE TABLE IF NOT EXISTS password_setups(token_hash TEXT PRIMARY KEY,email TEX
    else:c.execute('DELETE FROM sessions WHERE email IS NULL')
   for o in json.loads((ROOT/'docs/data/offers.json').read_text())['offers']:
    c.execute('INSERT OR IGNORE INTO offers VALUES (?,?)',(o['id'],json.dumps(o)))
+   if o['investment'] in ('Konarzewo','Kamionki','Sierniki'):
+    row=c.execute('SELECT data FROM offers WHERE id=?',(o['id'],)).fetchone();current=json.loads(row['data'])
+    metadata={key:o[key] for key in ('name','plot','buildingPlot','parcel','address','plotApproximate') if key in o}
+    if o['investment']=='Sierniki':metadata.update({key:o[key] for key in ('area','areaConfirmationPending') if key in o})
+    if any(current.get(key)!=value for key,value in metadata.items()):
+     current.update(metadata);current['version']=current.get('version',1)+1
+     c.execute('UPDATE offers SET data=? WHERE id=?',(json.dumps(current),o['id']))
  os.chmod(DB,0o600)
 def offers():
  with connect() as c:return [json.loads(r['data']) for r in c.execute('SELECT data FROM offers ORDER BY id')]

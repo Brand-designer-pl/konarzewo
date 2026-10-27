@@ -19,7 +19,7 @@ class WSGITests(unittest.TestCase):
   def start(status,headers):out.update(status=int(status.split()[0]),headers=dict(headers))
   out['body']=json.loads(b''.join(self.wsgi.application(env,start)));return out
  def test_mounted_auth_save_and_restart(self):
-  out=self.call('/offers');self.assertEqual(out['status'],200);self.assertEqual(len(out['body']['offers']),5)
+  out=self.call('/offers');self.assertEqual(out['status'],200);self.assertEqual(len(out['body']['offers']),7)
   self.assertEqual(self.call('/session')['status'],401)
   auth=self.call('/login','POST',{'email':'mario.orwat@gmail.com','password':'test-password-1234','remember':True},{'HTTP_ORIGIN':self.app.ORIGIN})
   self.assertEqual(auth['status'],200);cookie=auth['headers']['Set-Cookie'];self.assertIn('Secure',cookie);self.assertIn('HttpOnly',cookie);self.assertIn('Max-Age=7776000',cookie)
@@ -29,6 +29,24 @@ class WSGITests(unittest.TestCase):
   self.assertEqual(changed['status'],200);self.assertEqual(len(changed['body']['offer']['history']),1)
   self.app.initialize();self.assertEqual(next(o for o in self.call('/offers')['body']['offers'] if o['id']=='a1')['status'],'reserved')
   self.assertEqual(self.call('/logout','POST',{},headers)['status'],200);self.assertEqual(self.call('/session',headers=headers)['status'],401)
+ def test_descriptive_metadata_preserves_live_commercial_data(self):
+  current=next(o for o in self.app.offers() if o['id']=='a1')
+  current.update(name='Lokal A1',plot=350,price=812345,status='reserved',version=7,history=[{'at':'2026-10-01','oldPrice':749000,'price':812345}])
+  with self.app.connect() as c:c.execute('UPDATE offers SET data=? WHERE id=?',(json.dumps(current),'a1'))
+  self.app.initialize();updated=next(o for o in self.app.offers() if o['id']=='a1')
+  self.assertEqual(updated['name'],'Lokal A1');self.assertEqual(updated['plot'],356);self.assertEqual(updated['parcel'],'55/2');self.assertEqual(updated['buildingPlot'],712)
+  for key in ('price','status','history'):self.assertEqual(updated[key],current[key])
+  self.assertEqual(updated['version'],8)
+  self.app.initialize();self.assertEqual(next(o for o in self.app.offers() if o['id']=='a1'),updated)
+ def test_kamionki_two_independent_units_and_preserved_left_price(self):
+  left=next(o for o in self.app.offers() if o['id']=='kamionki')
+  left.update(plot=320,name='Lokal lewy',price=715000,status='reserved',version=9,history=[{'at':'2026-10-27','oldPrice':699000,'price':715000}])
+  with self.app.connect() as c:c.execute('UPDATE offers SET data=? WHERE id=?',(json.dumps(left),'kamionki'))
+  self.app.initialize();rows={o['id']:o for o in self.app.offers()}
+  self.assertEqual(rows['kamionki']['plot'],350);self.assertEqual(rows['kamionki']['name'],'Lokal lewy');self.assertEqual(rows['kamionki']['parcel'],'490/11')
+  for key in ('price','status','history'):self.assertEqual(rows['kamionki'][key],left[key])
+  right=rows['kamionki-prawy'];self.assertEqual(right['price'],749000);self.assertEqual(right['plot'],580);self.assertEqual(right['area'],rows['kamionki']['area']);self.assertEqual(right['history'],[])
+  self.app.initialize();self.assertEqual(self.app.offers(),list(rows.values()))
  def test_origin_csrf_and_path_guards(self):
   self.assertEqual(self.call('/login','POST',{}, {'HTTP_ORIGIN':'https://evil.example'})['status'],403)
   self.assertEqual(self.call('/offers/a1','PATCH',{}, {'HTTP_ORIGIN':self.app.ORIGIN})['status'],401)

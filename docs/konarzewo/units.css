@@ -31,3 +31,5 @@ body[data-unit] .local-switcher .investment-breadcrumb a{border-color:#68686840}
 
 /* Neutral cards with a restrained Mario-Bud red interaction accent. */
 .unit-card{transition:transform .25s ease-in-out,background .25s ease-in-out,border-color .25s ease-in-out}.unit-card:hover,.unit-card:focus-visible{border-color:#c83732}.unit-card:hover h2>span,.unit-card:focus-visible h2>span{color:#c83732}
+
+.unit-address{font-size:12px;line-height:1.65;color:#666}.local-switcher-links{flex-wrap:wrap}@media(max-width:600px){.local-switcher-inner{flex-wrap:wrap}.local-switcher-map{margin-left:0}}

@@ -46,3 +46,8 @@
 .sketch-home .claim>p:not(.eyebrow),.sketch-home .journey-cue{color:#45433f}
 .sketch-home .hero-visual-note,.sketch-home .journey-number{background:rgba(248,246,241,.9);color:#45433f}
 @media(max-width:760px){.sketch-home .brand-stage .brand-shade{background:linear-gradient(0deg,rgba(248,246,241,.98),rgba(248,246,241,.92) 32%,rgba(248,246,241,.35) 65%,transparent)}.sketch-home .brand-image{object-position:65% center}}
+
+/* Three investments share the same responsive card rhythm. */
+.developer-home .claim .line-link{display:inline-flex;align-items:center;min-height:48px;padding:14px 24px;border:0;border-radius:999px;background:#c83732;color:#fff}.developer-home .claim .line-link:hover{background:#a82b27;opacity:1}.developer-home .card-head>span{color:#c83732}.investment-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.investment-card{min-width:0}@media(max-width:1050px){.investment-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:760px){.investment-grid{grid-template-columns:1fr}}
+
+.maquette-home:not(.garden-home) .hero-visual-note{color:#454545;background:#ffffffaa;border-radius:30px;padding:6px 10px}
