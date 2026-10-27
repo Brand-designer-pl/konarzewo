@@ -33,7 +33,7 @@ class PanelTests(unittest.TestCase):
   self.assertEqual(self.request('/api/logout',{},'POST',token)[0],200);self.assertEqual(self.request('/api/session')[0],401)
  def test_remember_login(self):
   payload={'email':'test@example.com','password':self.password,'remember':True}
-  code,result,headers=self.request('/api/login',payload,'POST');self.assertEqual(code,200);self.assertIn('Max-Age=2592000',headers['Set-Cookie']);self.assertIn('SameSite=Strict',headers['Set-Cookie']);self.assertEqual(self.request('/api/session')[0],200)
+  code,result,headers=self.request('/api/login',payload,'POST');self.assertEqual(code,200);self.assertIn('Max-Age=7776000',headers['Set-Cookie']);self.assertIn('SameSite=Strict',headers['Set-Cookie']);self.assertEqual(self.request('/api/session')[0],200)
   self.assertEqual(self.request('/api/logout',{},'POST',result['csrf'])[0],200);self.assertEqual(self.request('/api/session')[0],401)
   code,_,headers=self.request('/api/login',dict(payload,remember=False),'POST');self.assertEqual(code,200);self.assertNotIn('Max-Age',headers['Set-Cookie'])
  def test_public_and_static_boundaries(self):

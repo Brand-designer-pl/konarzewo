@@ -22,7 +22,7 @@ class WSGITests(unittest.TestCase):
   out=self.call('/offers');self.assertEqual(out['status'],200);self.assertEqual(len(out['body']['offers']),5)
   self.assertEqual(self.call('/session')['status'],401)
   auth=self.call('/login','POST',{'email':'mario.orwat@gmail.com','password':'test-password-1234','remember':True},{'HTTP_ORIGIN':self.app.ORIGIN})
-  self.assertEqual(auth['status'],200);cookie=auth['headers']['Set-Cookie'];self.assertIn('Secure',cookie);self.assertIn('HttpOnly',cookie);self.assertIn('Max-Age=2592000',cookie)
+  self.assertEqual(auth['status'],200);cookie=auth['headers']['Set-Cookie'];self.assertIn('Secure',cookie);self.assertIn('HttpOnly',cookie);self.assertIn('Max-Age=7776000',cookie)
   headers={'HTTP_ORIGIN':self.app.ORIGIN,'HTTP_COOKIE':cookie.split(';')[0],'HTTP_X_CSRF_TOKEN':auth['body']['csrf']}
   offer=next(o for o in out['body']['offers'] if o['id']=='a1')
   changed=self.call('/offers/a1','PATCH',{'price':750000,'status':'reserved','version':offer['version']},headers)
