@@ -22,11 +22,12 @@ RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} !^mario-bud[.]com[.]pl$ [NC]
 RewriteRule ^ https://mario-bud.com.pl%{REQUEST_URI} [R=301,L]
 RewriteRule ^data/offers\\.json$ /api/offers [L]
+SetEnvIf Request_URI "^/panel/" MB_PANEL
 <IfModule mod_headers.c>
  Header always set X-Content-Type-Options nosniff
  Header always set Referrer-Policy strict-origin-when-cross-origin
  <FilesMatch "\\.(html|js|css|json)$">
-  Header set Cache-Control "no-cache"
+  Header set Cache-Control "no-cache" env=!MB_PANEL
  </FilesMatch>
  <FilesMatch "\\.(webp|jpg|jpeg|png|svg|mp4|woff2)$">
   Header set Cache-Control "public, max-age=604800"
