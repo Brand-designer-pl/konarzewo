@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS password_setups(token_hash TEXT PRIMARY KEY,email TEX
    owners=c.execute('SELECT email FROM admins').fetchall()
    if len(owners)==1:c.execute('UPDATE sessions SET email=? WHERE email IS NULL',(owners[0]['email'],))
    else:c.execute('DELETE FROM sessions WHERE email IS NULL')
-  for o in json.loads((ROOT/'docs/data/offers.json').read_text())['offers']:
+  for o in json.loads((ROOT/'docs/data/offers.json').read_text(encoding='utf-8'))['offers']:
    c.execute('INSERT OR IGNORE INTO offers VALUES (?,?)',(o['id'],json.dumps(o)))
    if o['investment'] in ('Konarzewo','Kamionki','Sierniki'):
     row=c.execute('SELECT data FROM offers WHERE id=?',(o['id'],)).fetchone();current=json.loads(row['data'])
