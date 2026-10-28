@@ -1,0 +1,15 @@
+/* Kamionki uses the shared Konarzewo selector, mapped to the entrance elevation. */
+.kam-estate{aspect-ratio:2400/1792;--unit-clip:polygon(0 0,43% 0,43% 100%,0 100%)}
+.kam-estate>img,.kam-estate .estate-clay,.kam-estate .estate-selected{width:100%;height:100%;object-fit:cover}
+.kam-estate .estate-clay{filter:grayscale(1) brightness(1.45);opacity:0}
+.kam-estate.has-selection .estate-clay{opacity:1}
+.kam-estate .estate-tint{width:100%;height:100%}
+.kam-estate .estate-hit{top:0;bottom:0;height:100%;padding-bottom:18%}
+.kam-estate .kam-left{left:0;width:43%}.kam-estate .kam-right{left:43%;width:57%}
+.kam-overview .unit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kam-overview .unit-card h2{font-size:clamp(24px,3vw,40px);gap:12px}
+.kam-location{padding:70px 6vw;background:#f6f6f6;color:#242424}.kam-location h2{font-size:clamp(30px,4vw,56px);font-weight:400;margin:20px 0 30px}.kam-location .estate-stage{max-width:1000px;margin-inline:auto}.kam-location>.line-link{color:#242424;margin-top:15px}
+body[data-kam-side=prawy] .kam-plan-image img:not([data-view="2d"]){transform:scaleX(-1)}
+body[data-kam-side] .local-switcher-label{font-size:12px}
+@media(max-width:750px){.kam-estate:has(.estate-popover:not([hidden])){padding-bottom:0;overflow:visible;margin-bottom:195px}.kam-estate:has(.estate-popover:not([hidden])) .estate-hit{top:0;bottom:0;height:100%}.kam-estate .estate-popover{bottom:auto;top:calc(100% + 12px);left:0;width:100%;min-height:175px}.kam-estate .estate-hit span{font-size:11px}.kam-overview .unit-grid{grid-template-columns:1fr}.kam-overview .unit-card p{max-width:none}.kam-location{padding:45px 6vw}}
+@media(max-width:600px){body[data-kam-side] .local-switcher-label{display:none}}
