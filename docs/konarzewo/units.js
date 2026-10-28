@@ -1,6 +1,6 @@
 (()=>{'use strict';
 const bounds={a1:[5.3,24.1],a2:[24.1,45.8],b1:[45.8,64.3],b2:[64.3,85.8]};
-const clip=id=>{if(id==='kamionki')return 'polygon(0% 0%,43% 0%,43% 100%,0% 100%)';if(id==='kamionki-prawy')return 'polygon(43% 0%,100% 0%,100% 100%,43% 100%)';const [l,r]=bounds[id];return `polygon(${l}% 15.6%,${r}% 15.6%,${r}% 77.8%,${l}% 77.8%)`};
+const clip=id=>{if(id==='kamionki')return 'polygon(0% 0%,50% 0%,50% 100%,0% 100%)';if(id==='kamionki-prawy')return 'polygon(50% 0%,100% 0%,100% 100%,50% 100%)';const [l,r]=bounds[id];return `polygon(${l}% 15.6%,${r}% 15.6%,${r}% 77.8%,${l}% 77.8%)`};
 document.querySelectorAll('[data-selected]').forEach(stage=>stage.style.setProperty('--unit-clip',clip(stage.dataset.selected)));
 const stage=document.querySelector('[data-estate-interactive]');
 if(stage){const pop=stage.querySelector('.estate-popover');const floating=matchMedia('(min-width:751px) and (hover:hover)');let current=null,touchSelection=null,maskInitialized=false;
