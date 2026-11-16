@@ -1,0 +1,614 @@
+.mosina-page {
+  background: #f5f5f1;
+  color: #232323;
+}
+
+.mosina-hero,
+.mosina-section {
+  padding-inline: 6vw;
+}
+
+.mosina-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 5vw, 100px);
+  align-items: center;
+  padding-block: clamp(130px, 18vh, 200px) clamp(56px, 8vw, 120px);
+}
+
+.mosina-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: clamp(30px, 5vw, 70px);
+  font-size: 0.85rem;
+}
+
+.mosina-hero h1 {
+  margin: 12px 0 20px;
+  font-size: clamp(4rem, 9vw, 9rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.mosina-lead,
+.mosina-section-heading > p:last-child,
+.mosina-page .contact > p:last-of-type {
+  max-width: 55ch;
+  line-height: 1.65;
+}
+
+.mosina-hero-image,
+.mosina-figure {
+  margin: 0;
+  min-width: 0;
+}
+
+.mosina-hero-image img,
+.mosina-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #fff;
+}
+
+.mosina-page figcaption {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #515151;
+}
+
+.mosina-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-top: 24px;
+}
+
+.mosina-actions a,
+.mosina-breadcrumb a,
+.mosina-page figcaption a,
+.mosina-page footer a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.mosina-actions .mosina-button {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 2px;
+  color: white;
+  background: #a82b27;
+  text-decoration: none;
+}
+
+.mosina-page a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.mosina-actions .mosina-button:focus-visible {
+  outline-color: #a82b27;
+}
+
+.mosina-section {
+  padding-block: clamp(42px, 6vw, 84px);
+  border-top: 1px solid #dadad4;
+}
+
+.mosina-section h2 {
+  margin: 10px 0 16px;
+  font-size: clamp(2.2rem, 5vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.mosina-section-heading {
+  margin-bottom: 28px;
+}
+
+.mosina-section > .mosina-figure {
+  max-width: 1010px;
+}
+
+.mosina-plans {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 4vw, 56px);
+}
+
+.mosina-figure > a {
+  display: block;
+}
+
+.mosina-page #rzuty,
+.mosina-page #kontakt {
+  scroll-margin-top: 100px;
+}
+
+.mosina-page footer {
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 760px) {
+  .mosina-hero,
+  .mosina-plans {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.mosina-price {
+  margin: 22px 0 4px;
+  font-size: clamp(1.75rem, 3vw, 2.6rem);
+  font-weight: 650;
+}
+
+.mosina-price-note,
+.mosina-area {
+  color: #515151;
+}
+
+.mosina-area,
+.mosina-source {
+  margin-block: 20px;
+}
+
+.mosina-facts,
+.mosina-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.mosina-facts {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 24px 0;
+}
+
+.mosina-facts div {
+  border-top: 1px solid #dadad4;
+  padding-top: 12px;
+}
+
+.mosina-facts dd {
+  margin: 5px 0 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.mosina-standard {
+  padding-left: 1.3em;
+  line-height: 1.75;
+}
+
+.mosina-source a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+@media (max-width: 760px) {
+  .mosina-gallery {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mosina-facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.mosina-page #lokale {
+  scroll-margin-top: 100px;
+}
+
+.mosina-unit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  padding: 0;
+  list-style: none;
+}
+
+.mosina-unit-card {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  height: 100%;
+  padding: clamp(16px, 2.5vw, 32px);
+  border: 1px solid #dadad4;
+  background: #fff;
+}
+
+.mosina-unit-card:hover {
+  border-color: #a82b27;
+}
+
+.mosina-unit-card strong {
+  font-size: 1.5rem;
+}
+
+.mosina-unit-link,
+.mosina-unit-nav a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.mosina-unit-link {
+  margin-top: 8px;
+}
+
+.mosina-unit-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin-top: 28px;
+  font-size: 0.9rem;
+}
+
+.mosina-unit-nav a[aria-current="page"] {
+  color: #a82b27;
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .mosina-unit-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.mosina-unit-image {
+  position: relative;
+  isolation: isolate;
+}
+
+.mosina-unit-image > img:first-child {
+  filter: grayscale(1) brightness(0.79);
+}
+
+.mosina-unit-image .mosina-unit-color {
+  position: absolute;
+  inset: 0;
+  clip-path: var(--unit-mask);
+}
+
+[data-mosina-unit="a1"] {
+  --unit-mask: polygon(11.7% 44.7%, 17.5% 37.6%, 22.1% 28.3%, 29% 30.1%, 33.6% 28.3%, 34.6% 70.5%, 14.6% 69%);
+  --label-x: 25%;
+}
+
+[data-mosina-unit="a2"] {
+  --unit-mask: polygon(33.6% 28.3%, 33.4% 22.4%, 35% 22.6%, 38.6% 25.2%, 39.2% 24.5%, 44% 26.7%, 53% 24.9%, 55% 72.2%, 34.6% 70.5%);
+  --label-x: 45%;
+}
+
+[data-mosina-unit="b1"] {
+  --unit-mask: polygon(53% 24.9%, 52.9% 18.7%, 54.6% 18.5%, 56.2% 19.4%, 56.3% 20.3%, 57.9% 18.9%, 60% 20.1%, 60.1% 22%, 62.3% 18.8%, 63.4% 19.3%, 85.2% 17.3%, 87.8% 49%, 87.4% 67.9%, 79% 74.4%, 55% 72.2%);
+  --label-x: 70%;
+}
+
+.mosina-unit-label {
+  position: absolute;
+  left: var(--label-x);
+  bottom: 15%;
+  transform: translateX(-50%);
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: #fff;
+  color: #232323;
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px #0003;
+}
+
+.mosina-floor-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.mosina-floor-controls[hidden],
+.mosina-floor-panel[hidden] {
+  display: none;
+}
+
+.mosina-floor-controls button {
+  min-height: 44px;
+  padding: 8px 20px;
+  border: 1px solid #dadad4;
+  border-radius: 999px;
+  background: #fff;
+  color: #232323;
+  cursor: pointer;
+  font: inherit;
+}
+
+.mosina-floor-controls button[aria-pressed="true"] {
+  border-color: #232323;
+  background: #232323;
+  color: #fff;
+}
+
+.mosina-floor-controls button:focus-visible {
+  outline: 2px solid #a82b27;
+  outline-offset: 3px;
+}
+
+.mosina-floor-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 480px);
+  align-items: start;
+  gap: clamp(24px, 5vw, 72px);
+}
+
+.mosina-floor-panel + .mosina-floor-panel {
+  margin-top: 32px;
+}
+
+.mosina-floor-panel[hidden] + .mosina-floor-panel {
+  margin-top: 0;
+}
+
+.mosina-floor-figure {
+  padding: 16px;
+  background: #fff;
+}
+
+.mosina-floor-figure img {
+  width: auto;
+  max-width: 100%;
+  max-height: 680px;
+  margin-inline: auto;
+  object-fit: contain;
+}
+
+.mosina-floor-info h3 {
+  margin: 0 0 16px;
+  font-size: clamp(1.55rem, 3vw, 2.5rem);
+  line-height: 1.1;
+}
+
+.mosina-room-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.mosina-room-table caption {
+  margin-bottom: 8px;
+  text-align: left;
+  color: #515151;
+}
+
+.mosina-room-table th,
+.mosina-room-table td {
+  border-bottom: 1px solid #dadad4;
+  padding: 11px 0;
+}
+
+.mosina-room-table tbody th {
+  font-weight: 400;
+}
+
+.mosina-room-table tr > :last-child {
+  padding-left: 12px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .mosina-floor-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mosina-floor-figure {
+    padding: 10px;
+  }
+}
+
+.mosina-unit-picker {
+  position: relative;
+  isolation: isolate;
+}
+
+.mosina-unit-picker > img {
+  filter: grayscale(1) brightness(0.86);
+}
+
+.mosina-unit-hotspot {
+  position: absolute;
+  inset: 0;
+  clip-path: var(--unit-mask);
+  color: #232323;
+  touch-action: manipulation;
+}
+
+.mosina-unit-hotspot::before {
+  position: absolute;
+  inset: 0;
+  background: url("assets/oferta-front.jpg") center / 100% 100% no-repeat;
+  content: "";
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.mosina-unit-hotspot span {
+  position: absolute;
+  top: 55%;
+  left: var(--label-x);
+  display: grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px #0004;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.mosina-unit-hotspot:focus-visible,
+.mosina-unit-hotspot:active {
+  opacity: 1;
+}
+
+.mosina-unit-hotspot:focus-visible::before,
+.mosina-unit-hotspot:active::before {
+  opacity: 1;
+}
+
+.mosina-unit-hotspot:focus-visible span {
+  outline: 3px solid #a82b27;
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .mosina-unit-hotspot:hover,
+  .mosina-unit-hotspot:hover::before {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mosina-unit-hotspot::before {
+    transition: none;
+  }
+}
+
+.mosina-unit-tooltip {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  inset: auto 12px 12px auto;
+  gap: 4px;
+  max-width: calc(100% - 24px);
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #fffffff2;
+  box-shadow: 0 6px 22px #0003;
+  color: #232323;
+  pointer-events: none;
+  font-size: 0.875rem;
+}
+
+.mosina-unit-tooltip strong {
+  font-size: 1rem;
+}
+
+.mosina-unit-picker:has(:where([data-mosina-unit="a1"]):focus-visible) :where(#mosina-parametry-a1),
+.mosina-unit-picker:has(:where([data-mosina-unit="a2"]):focus-visible) :where(#mosina-parametry-a2),
+.mosina-unit-picker:has(:where([data-mosina-unit="b1"]):focus-visible) :where(#mosina-parametry-b1) {
+  display: grid;
+}
+
+@media (hover: hover) {
+  .mosina-unit-picker:has(:where(.mosina-unit-hotspot:hover)) .mosina-unit-tooltip {
+    display: none;
+  }
+
+  .mosina-unit-picker:has([data-mosina-unit="a1"]:hover) :where(#mosina-parametry-a1),
+  .mosina-unit-picker:has([data-mosina-unit="a2"]:hover) :where(#mosina-parametry-a2),
+  .mosina-unit-picker:has([data-mosina-unit="b1"]:hover) :where(#mosina-parametry-b1) {
+    display: grid;
+  }
+}
+
+.mosina-offer main {
+  padding-top: 88px;
+}
+
+.mosina-offer .local-switcher .investment-breadcrumb {
+  position: static;
+  padding: 8px 6vw 0;
+  color: #5a5a5a;
+}
+
+.mosina-offer .investment-breadcrumb a {
+  border-bottom-color: #5a5a5a55;
+}
+
+.mosina-offer-hero {
+  position: relative;
+  background: #222;
+  color: #fff;
+}
+
+.mosina-offer-hero .mosina-unit-hero {
+  position: relative;
+  overflow: hidden;
+  height: clamp(540px, 52vw, 880px);
+}
+
+.mosina-offer-hero .mosina-unit-image {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-53%);
+}
+
+.mosina-offer-hero .mosina-unit-label {
+  bottom: 34%;
+}
+
+.mosina-offer-heading {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 70px 6vw 35px;
+  background: linear-gradient(transparent, #151515ed);
+}
+
+.mosina-offer-heading h1 {
+  margin: 10px 0 0;
+  font-size: clamp(3rem, 7vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+
+.mosina-offer-heading a:focus-visible {
+  outline-color: white;
+}
+
+.mosina-offer .summary-top h2 {
+  margin-bottom: 18px;
+}
+
+.mosina-offer .summary-top > div > p:last-child {
+  max-width: 55ch;
+  line-height: 1.65;
+}
+
+.mosina-offer #rzuty,
+.mosina-offer #kontakt {
+  scroll-margin-top: 185px;
+}
+
+@media (max-width: 950px) {
+  .mosina-offer main {
+    padding-top: 74px;
+  }
+}
+
+@media (max-width: 760px) {
+  .mosina-offer-hero .mosina-unit-hero {
+    height: auto;
+  }
+
+  .mosina-offer-hero .mosina-unit-image {
+    position: relative;
+    top: auto;
+    transform: none;
+  }
+
+  .mosina-offer-hero .mosina-unit-label {
+    bottom: 15%;
+  }
+
+  .mosina-offer-heading {
+    position: relative;
+    padding: 28px 6vw 36px;
+    background: #222;
+  }
+}
