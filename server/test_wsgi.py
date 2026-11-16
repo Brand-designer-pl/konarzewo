@@ -19,7 +19,7 @@ class WSGITests(unittest.TestCase):
   def start(status,headers):out.update(status=int(status.split()[0]),headers=dict(headers))
   out['body']=json.loads(b''.join(self.wsgi.application(env,start)));return out
  def test_mounted_auth_save_and_restart(self):
-  out=self.call('/offers');self.assertEqual(out['status'],200);self.assertEqual(len(out['body']['offers']),7)
+  out=self.call('/offers');self.assertEqual(out['status'],200);self.assertEqual(len(out['body']['offers']),10)
   self.assertEqual(self.call('/session')['status'],401)
   auth=self.call('/login','POST',{'email':'mario.orwat@gmail.com','password':'test-password-1234','remember':True},{'HTTP_ORIGIN':self.app.ORIGIN})
   self.assertEqual(auth['status'],200);cookie=auth['headers']['Set-Cookie'];self.assertIn('Secure',cookie);self.assertIn('HttpOnly',cookie);self.assertIn('Max-Age=7776000',cookie)
@@ -29,6 +29,26 @@ class WSGITests(unittest.TestCase):
   self.assertEqual(changed['status'],200);self.assertEqual(len(changed['body']['offer']['history']),1)
   self.app.initialize();self.assertEqual(next(o for o in self.call('/offers')['body']['offers'] if o['id']=='a1')['status'],'reserved')
   self.assertEqual(self.call('/logout','POST',{},headers)['status'],200);self.assertEqual(self.call('/session',headers=headers)['status'],401)
+ def test_mosina_price_and_availability_are_independent_and_persist(self):
+  auth=self.call('/login','POST',{'email':'mario.orwat@gmail.com','password':'test-password-1234'},{'HTTP_ORIGIN':self.app.ORIGIN})
+  headers={'HTTP_ORIGIN':self.app.ORIGIN,'HTTP_COOKIE':auth['headers']['Set-Cookie'].split(';')[0],'HTTP_X_CSRF_TOKEN':auth['body']['csrf']}
+  initial={offer['id']:offer for offer in self.call('/offers')['body']['offers']}
+  self.assertEqual({key for key in initial if key.startswith('mosina-')},{'mosina-a1','mosina-a2','mosina-b1'})
+  self.assertEqual(initial['mosina-a1']['price'],749000)
+  self.assertEqual(initial['mosina-b1']['status'],'pending')
+  self.assertIsNone(initial['mosina-a2']['price'])
+  status_only=self.call('/offers/mosina-a2','PATCH',{'price':None,'status':'reserved','version':1},headers)
+  self.assertEqual(status_only['status'],200)
+  self.assertEqual(status_only['body']['offer']['history'],[])
+  changed=self.call('/offers/mosina-a2','PATCH',{'price':760000,'status':'available','version':2},headers)
+  self.assertEqual(changed['status'],200)
+  self.assertIsNone(changed['body']['offer']['history'][-1]['oldPrice'])
+  self.app.initialize()
+  current={offer['id']:offer for offer in self.call('/offers')['body']['offers']}
+  self.assertEqual(current['mosina-a2'],changed['body']['offer'])
+  self.assertEqual(current['mosina-b1'],initial['mosina-b1'])
+  self.assertEqual(current['a2'],initial['a2'])
+  self.assertEqual(self.call('/offers/a2','PATCH',{'price':None,'status':'pending','version':1},headers)['status'],400)
  def test_descriptive_metadata_preserves_live_commercial_data(self):
   current=next(o for o in self.app.offers() if o['id']=='a1')
   current.update(name='Lokal A1',plot=350,price=812345,status='reserved',version=7,history=[{'at':'2026-10-01','oldPrice':749000,'price':812345}])

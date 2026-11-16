@@ -36,6 +36,8 @@
   ]
 }
   </script>
+  <script src="../offers-config.js?v=panel11"></script>
+  <script src="availability.js?v=1" defer></script>
 </head>
 <body class="mosina-page">
   <header class="site-header" data-site-header></header>
@@ -62,20 +64,25 @@
           <a class="mosina-unit-hotspot" data-mosina-unit="a1" aria-describedby="mosina-parametry-a1" href="lokal-a1.html" aria-label="Lokal A1, lewy"><span>A1</span></a>
           <a class="mosina-unit-hotspot" data-mosina-unit="a2" aria-describedby="mosina-parametry-a2" href="lokal-a2.html" aria-label="Lokal A2, środkowy"><span>A2</span></a>
           <a class="mosina-unit-hotspot" data-mosina-unit="b1" aria-describedby="mosina-parametry-b1" href="lokal-b1.html" aria-label="Lokal B1, prawy"><span>B1</span></a>
-          <div class="mosina-unit-tooltip" id="mosina-parametry-a1">
+          <div class="mosina-unit-tooltip" id="mosina-parametry-a1" data-mosina-offer="mosina-a1">
             <strong>Lokal A1</strong>
             <span>4 pokoje · działka ok. 400 m²</span>
-            <span>749 000 zł wg ogłoszenia</span>
+            <span data-mosina-price>749 000 zł wg ogłoszenia</span>
+            <span data-mosina-status>Dostępność do potwierdzenia</span>
           </div>
-          <div class="mosina-unit-tooltip" id="mosina-parametry-a2">
+          <div class="mosina-unit-tooltip" id="mosina-parametry-a2" data-mosina-offer="mosina-a2">
             <strong>Lokal A2</strong>
             <span>Budynek A · 4 pokoje wg rzutu</span>
             <span>Parter i poddasze</span>
+            <span data-mosina-price>Cena do potwierdzenia</span>
+            <span data-mosina-status>Dostępność do potwierdzenia</span>
           </div>
-          <div class="mosina-unit-tooltip" id="mosina-parametry-b1">
+          <div class="mosina-unit-tooltip" id="mosina-parametry-b1" data-mosina-offer="mosina-b1">
             <strong>Lokal B1</strong>
             <span>Budynek B · 4 pokoje wg rzutu</span>
             <span>Parter i poddasze</span>
+            <span data-mosina-price>Cena do potwierdzenia</span>
+            <span data-mosina-status>Dostępność do potwierdzenia</span>
           </div>
         </div>
         <figcaption>Wybierz lokal na zdjęciu lub z listy poniżej.</figcaption>
@@ -89,26 +96,29 @@
       </div>
       <ul class="mosina-unit-grid">
         <li>
-          <a class="mosina-unit-card" href="lokal-a1.html">
+          <a class="mosina-unit-card" href="lokal-a1.html" data-mosina-offer="mosina-a1">
             <strong>Lokal A1</strong>
             <span>Budynek A · lokal lewy na rzucie</span>
-            <span>749 000 zł wg ogłoszenia · 4 pokoje</span>
+            <span data-mosina-price>749 000 zł wg ogłoszenia</span>
+            <span data-mosina-status>Dostępność do potwierdzenia</span>
             <span class="mosina-unit-link">Zobacz lokal</span>
           </a>
         </li>
         <li>
-          <a class="mosina-unit-card" href="lokal-a2.html">
+          <a class="mosina-unit-card" href="lokal-a2.html" data-mosina-offer="mosina-a2">
             <strong>Lokal A2</strong>
             <span>Budynek A · lokal środkowy na rzucie</span>
-            <span>Cena i dostępność do potwierdzenia</span>
+            <span data-mosina-price>Cena do potwierdzenia</span>
+            <span data-mosina-status>Dostępność do potwierdzenia</span>
             <span class="mosina-unit-link">Zobacz lokal</span>
           </a>
         </li>
         <li>
-          <a class="mosina-unit-card" href="lokal-b1.html">
+          <a class="mosina-unit-card" href="lokal-b1.html" data-mosina-offer="mosina-b1">
             <strong>Lokal B1</strong>
             <span>Budynek B · lokal prawy na rzucie</span>
-            <span>Cena i dostępność do potwierdzenia</span>
+            <span data-mosina-price>Cena do potwierdzenia</span>
+            <span data-mosina-status>Dostępność do potwierdzenia</span>
             <span class="mosina-unit-link">Zobacz lokal</span>
           </a>
         </li>

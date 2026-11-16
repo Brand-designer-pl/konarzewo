@@ -144,12 +144,15 @@ class Handler(SimpleHTTPRequestHandler):
   id=urlsplit(self.path).path.removeprefix('/api/offers/')
   try:
    data=self.body();price=data['price'];status=data['status'];version=data['version']
-   if type(price) is not int or not 1<=price<=100000000 or status not in LABELS or type(version) is not int:raise ValueError()
+   if (price is not None and (type(price) is not int or not 1<=price<=100000000)) or not isinstance(status,str) or type(version) is not int:raise ValueError()
   except (ValueError,KeyError,TypeError):return self.reply(400,{'error':'Podaj prawidłową cenę i status.'})
   with connect() as c:
    c.execute('BEGIN IMMEDIATE');row=c.execute('SELECT data FROM offers WHERE id=?',(id,)).fetchone()
    if not row:return self.reply(404,{'error':'Nie znaleziono lokalu.'})
    offer=json.loads(row['data'])
+   is_mosina=offer['investment']=='Mosina'
+   if (price is None and not is_mosina) or (status not in LABELS and not (is_mosina and status=='pending')):
+    return self.reply(400,{'error':'Podaj prawidłową cenę i status.'})
    if offer['version']!=version:return self.reply(409,{'error':'Oferta została zmieniona. Odśwież panel przed zapisem.'})
    if offer['price']!=price:offer['history'].append({'at':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'oldPrice':offer['price'],'price':price})
    offer.update(price=price,status=status,version=version+1);c.execute('UPDATE offers SET data=? WHERE id=?',(json.dumps(offer),id))
