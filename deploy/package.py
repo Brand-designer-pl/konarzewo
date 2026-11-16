@@ -1,6 +1,8 @@
 """Build a portable public bundle without credentials or mutable offer data."""
-import tarfile,tempfile
+import json,tarfile,tempfile
 from pathlib import Path
+from discover_offers import offer_seed
+
 ROOT=Path(__file__).resolve().parents[1]
 def build(output):
  with tempfile.TemporaryDirectory() as folder:
@@ -42,8 +44,11 @@ SetEnvIf Request_URI "^/panel/" MB_PANEL
 """)
   # The seed lives outside the web root in production; the public URL is rewritten to the API.
   (staging/'public/data/offers.json').unlink()
-  for relative in ['server/app.py','server/wsgi.py','server/mail.py','server/invite_admin.py','docs/data/offers.json','docs/assets/mario-bud-email-logo.png']:
+  for relative in ['server/app.py','server/wsgi.py','server/mail.py','server/invite_admin.py','docs/assets/mario-bud-email-logo.png']:
    target=staging/'application'/relative;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes((ROOT/relative).read_bytes())
+  seed=staging/'application/docs/data/offers.json'
+  seed.parent.mkdir(parents=True,exist_ok=True)
+  seed.write_text(json.dumps(offer_seed(ROOT/'docs'),ensure_ascii=False),encoding='utf-8')
   (staging/'application/wsgi.py').write_text('from server.wsgi import application\n')
   with tarfile.open(output,'w:gz') as archive:
    archive.add(staging/'public',arcname='public');archive.add(staging/'application',arcname='application')

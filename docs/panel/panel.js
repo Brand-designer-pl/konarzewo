@@ -55,7 +55,7 @@ if(offer.plot!=null)metrics.push('część działki '+(offer.plotApproximate?'ok
 if(offer.address)metrics.push(offer.address);
 if(offer.address&&offer.parcel)metrics.push('nr działki '+offer.parcel);
 form.querySelector('.metrics').textContent=metrics.join(' · ');
-if(offer.investment==='Mosina'){
+if(offer.investment==='Mosina'||offer.discovered===true){
  form.elements.price.required=false;
  form.elements.status.add(new Option(labels.pending,'pending'));
 }

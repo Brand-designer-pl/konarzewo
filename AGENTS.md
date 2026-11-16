@@ -9,4 +9,4 @@ Sierniki: osobne rzuty 2D/3D parteru i poddasza w docs/sierniki/. Metraż market
 
 Mosina, ul. Aleksandra Fredry: strona wyboru w docs/mosina/index.html oraz osobne strony A1, A2 i B1 z rzutami. Budynek A obejmuje lokale A1 i A2, a budynek B lokal B1. Oferta A1 pochodzi z ogłoszenia GekkoHouse nr 360013. Źródłowe PDF-y są w ../materialy/mosina-fredry/ poza katalogiem publikowanym. Ceny A1 nie przenoś na pozostałe lokale. Zachowaj informację o rozbieżności w metrażu do czasu wyjaśnienia przez dewelopera.
 
-Przy dodawaniu nowej inwestycji uwzględnij jej lokale w docs/data/offers.json. Stosuj unikalne, stabilne ID i zweryfikowane dane sprzedażowe. Panel tworzy listę inwestycji z rekordów ofert.
+Przy dodawaniu inwestycji użyj karty .investment-card z nazwą w h3 i linkiem do katalogu inwestycji. Umieść podstrony lokali jako lokal-*.html w tym katalogu. Przy pojedynczej ofercie użyj sekcji .offer-summary lub stabilnego body[data-unit] na index.html inwestycji. Pakiet wdrożeniowy wykrywa lokale z HTML i dodaje je do panelu z pustą ceną i statusem do potwierdzenia. Zachowaj stabilne adresy lub identyfikatory lokali, aby powiązać je z zapisanymi ofertami.

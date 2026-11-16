@@ -150,8 +150,8 @@ class Handler(SimpleHTTPRequestHandler):
    c.execute('BEGIN IMMEDIATE');row=c.execute('SELECT data FROM offers WHERE id=?',(id,)).fetchone()
    if not row:return self.reply(404,{'error':'Nie znaleziono lokalu.'})
    offer=json.loads(row['data'])
-   is_mosina=offer['investment']=='Mosina'
-   if (price is None and not is_mosina) or (status not in LABELS and not (is_mosina and status=='pending')):
+   allows_unconfirmed=offer['investment']=='Mosina' or offer.get('discovered') is True
+   if (price is None and not allows_unconfirmed) or (status not in LABELS and not (allows_unconfirmed and status=='pending')):
     return self.reply(400,{'error':'Podaj prawidłową cenę i status.'})
    if offer['version']!=version:return self.reply(409,{'error':'Oferta została zmieniona. Odśwież panel przed zapisem.'})
    if offer['price']!=price:offer['history'].append({'at':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'oldPrice':offer['price'],'price':price})
